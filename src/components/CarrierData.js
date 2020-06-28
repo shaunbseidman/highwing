@@ -1,36 +1,55 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Container from '@material-ui/core/Container';
-import ChartItem from './ChartItem'
 import PieChart from './PieChart'
 import {makeStyles} from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import {BREAKPOINTS} from './Styles'
+import  '../styles/carrierdata.scss';
 
 const useStyles = makeStyles({
     carrierInfo: {
         backgroundColor: '#ebeeef',
-        // display: 'grid',
-        // gridTemplateColumns: '1fr 1fr',
-        margin: '1rem',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        marginLeft: '1rem',
+        marginRight: '1rem',
+        marginBottom: '1rem',
         [BREAKPOINTS.down('md')]: {
             display: 'block',
         },
+    },
+    filterButton: {
+        marginLeft: '1rem',
+        marginRight: '.3rem',
+        marginTop: '4rem',
+        marginBottom: '4rem',
+        "&:active": {
+            backgroundColor: "rgb(99, 217, 193)"
+        }
     }
   });
 
 export default function CarrierData(props) {
     const classes = useStyles();
-    //broker
+
+    //broker props
     const brokerPremium = props.brokerdata.premiumRange.map(division => (
         division.premium
     ))
     const brokerPremiumTitle = props.brokerdata.premiumRange.map(division => (
         division.title
     ))
-    const brokerDivisionData = props.brokerdata.brokerDivision.map(division => (
+    const brokerMarketData = props.brokerdata.brokerDivision.map(division => (
         division.proportion
     ))
-    const brokerDivisionTitle = props.brokerdata.brokerDivision.map(division => (
+    const brokerMarketTitle = props.brokerdata.brokerDivision.map(division => (
         division.title
+    ))
+    const brokerProductData = props.brokerdata.products.map(product => (
+        product.proportion
+    ))
+    const brokerProductTitle = props.brokerdata.products.map(product => (
+        product.title
     ))
     const brokerIndustryData = props.brokerdata.industries.map(industry => (
         industry.proportion
@@ -38,62 +57,130 @@ export default function CarrierData(props) {
     const brokerIndustryTitle = props.brokerdata.industries.map(industry => (
         industry.title
     ))
-    //carieer
-    const divisionData = props.carrierdata.brokerDivision.map(division => (
+
+    //carieer props
+    const premium = props.carrierdata.premiumRange.map(division => (
+        division.premium
+    ))
+    const premiumTitle = props.carrierdata.premiumRange.map(division => (
+        division.title
+    ))
+    const marketData = props.carrierdata.brokerDivision.map(division => (
         division.proportion
     ))
-    const productData = props.carrierdata.products.map(industry => (
+    const marketTitle = props.carrierdata.brokerDivision.map(division => (
+        division.title
+    ))
+    const productData = props.carrierdata.products.map(product => (
+        product.proportion
+    ))
+    const productTitle = props.carrierdata.products.map(product => (
+        product.title
+    ))
+    const industryData = props.carrierdata.industries.map(industry => (
         industry.proportion
     ))
-    const industryData = props.carrierdata.industries.map(division => (
-        division.proportion
-    ))
-    const divisionTitle = props.carrierdata.brokerDivision.map(division => (
-        division.title
-    ))
-    const productTitle = props.carrierdata.products.map(industry => (
+    const industryTitle = props.carrierdata.industries.map(industry => (
         industry.title
     ))
-    const industryTitle = props.carrierdata.industries.map(division => (
-        division.title
-    ))
+
+    const [isPremium, setIsPremium] = useState(false);
+    const [isIndustry, setIsIndustry] = useState(false);
+    const [isMarket, setIsMarkets] = useState(false);
+    const [isProducts, setIsProdcuts] = useState(false);
 
     return (
-        <div className={classes.carrierInfo}>
-            broker premium
-            <div>
-                <PieChart data={brokerPremium} title={brokerPremiumTitle}/>
+        <React.Fragment>
+            <div className="buttonFilters">
+                <Button
+                onClick={() => {
+                    setIsPremium(true)
+                }}
+                className={classes.filterButton}
+                variant="outlined">
+                Premium Range
+                </Button>
+                <Button
+                    onClick={() => {
+                        setIsMarkets(true)
+                    }}
+                    className={classes.filterButton}
+                    variant="outlined">
+                    Markets
+                </Button>
+                <Button
+                    onClick={() => {
+                        setIsIndustry(true)
+                    }}
+                    className={classes.filterButton}
+                    variant="outlined">
+                    Industries
+                </Button>
+                <Button
+                    onClick={() => {
+                        setIsProdcuts(true)
+                    }}
+                    className={classes.filterButton}
+                    variant="outlined">
+                    Products
+                </Button>
             </div>
-            <div>
-                broker industries  - chore
-                <PieChart data={brokerIndustryData} title={brokerIndustryTitle}/>
+            <div className={classes.carrierInfo}>
+                <div className={classes.broker}>
+                    <h1 className="brokerTitle">Broker Book</h1>
+                    {isPremium &&
+                        <div className="pieData">
+                            <h3>Broker Premium</h3>
+                            <PieChart data={brokerPremium} title={brokerPremiumTitle}/>
+                        </div>
+                    }
+                    {isMarket &&
+                        <div className="pieData">
+                            <h3>Broker Markets</h3>
+                            <PieChart data={brokerMarketData} title={brokerMarketTitle}/>
+                        </div>
+                    }
+                    {isIndustry &&
+                        <div className="pieData">
+                            <h3>Broker Industries</h3>
+                            <PieChart data={brokerIndustryData} title={brokerIndustryTitle}/>
+                        </div>
+                    }
+                    {isProducts &&
+                        <div className="pieData">
+                            <h3>Broker Products</h3>
+                            <PieChart data={brokerProductData} title={brokerProductTitle}/>
+                        </div>
+                    }
+                </div>
+                <div className={classes.carrier}>
+                    <h1 className="carrierTitle">Carrier Placement</h1>
+                    {isPremium &&
+                        <div className="pieData">
+                            <h3>Carrier Premium</h3>
+                            <PieChart data={premium} title={premiumTitle}/>
+                        </div>
+                    }
+                    {isMarket &&
+                        <div className="pieData">
+                            <h3>Carrier Markets</h3>
+                            <PieChart data={marketData} title={marketTitle}/>
+                        </div>
+                    }
+                    {isIndustry &&
+                        <div className="pieData">
+                            <h3>Carrier Industries</h3>
+                            <PieChart data={industryData} title={industryTitle}/>
+                        </div>
+                    }
+                    {isProducts &&
+                        <div className="pieData">
+                            <h3>Carrier Products</h3>
+                            <PieChart data={productData} title={productTitle}/>
+                        </div>
+                    }
+                </div>
             </div>
-            <div>
-                broker divisions
-                <PieChart data={brokerDivisionData} title={brokerDivisionTitle}/>
-            </div>
-
-            carrier division
-            <div>
-                {props.carrierdata.brokerDivision.map(division => (
-                    <ChartItem title={division.title} premium={division.premium} proportion={division.proportion}/>
-                ))}
-                <PieChart data={divisionData} title={divisionTitle}/>
-            </div>
-            carrier industries
-            <div>
-                {props.carrierdata.industries.map(industry => (
-                    <ChartItem title={industry.title} premium={industry.premium} proportion={industry.proportion}/>
-                ))}
-                <PieChart data={industryData} title={industryTitle}/>
-            </div>
-            carrier products
-            <div>
-                {props.carrierdata.products.map(product => (
-                    <ChartItem title={product.title} premium={product.premium} proportion={product.proportion}/>
-                ))}
-                <PieChart data={productData} title={productTitle}/>
-            </div>
-        </div>
+        </React.Fragment>
     )
 }

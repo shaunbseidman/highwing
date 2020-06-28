@@ -2,7 +2,6 @@ import React from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {makeStyles} from '@material-ui/core/styles';
 import  '../styles/broker.scss';
-import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles({
     arrow: {
