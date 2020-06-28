@@ -15,6 +15,28 @@ query ChartQuery {
         carrier {
             name
         }
+        brokerSlice {
+            premiumRange {
+              title
+              premium
+              proportion
+            }
+            products {
+              title,
+              premium
+              proportion
+            }
+            industries {
+              title
+              premium
+              proportion
+            }
+            brokerDivision {
+              title
+              premium
+              proportion
+            }
+          }
         carrierSlice {
             products {
                 title
@@ -44,9 +66,10 @@ export class Charts extends Component {
                         ({loading, error, data}) => {
                             if(loading) return <h3>Data loading...</h3>
                             if(error)console.log(error)
+                            console.log(data)
                             return <Fragment>
                                 <BrokerTitle title={data.mostRecentSnapshot.carrier.name} description={data.mostRecentSnapshot.broker.description}/>
-                                <CarrierData carrierdata={data.mostRecentSnapshot.carrierSlice}/>
+                                <CarrierData carrierdata={data.mostRecentSnapshot.carrierSlice} brokerdata={data.mostRecentSnapshot.brokerSlice}/>
                             </Fragment>
                         }
                     }

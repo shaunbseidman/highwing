@@ -1,35 +1,50 @@
+import React from 'react';
+import {Pie, Doughnut} from 'react-chartjs-2';
 
-import React, { Component } from 'react'
-import Chart from "chart.js";
-
-export default class PieChart extends Component {
-    chartRef = React.createRef();
-
-    componentDidMount() {
-        const myChartRef = this.chartRef.current.getContext("2d");
-        new Chart(myChartRef, {
-            type: "doughnut",
-            data: {
-                labels: ["One", "Two", "Three"],
-                datasets: [
-                    {
-                        label: "proportion",
-                        data: [86, 67, 91],
-                    }
-                ]
+export default function PieChart (props) {
+    const graphData = props
+    const graphNumbers = graphData.data
+    const graphTitle = graphData.title
+    console.log(graphData,'data')
+    const fart = {
+        labels: graphTitle,
+        datasets: [
+          {
+            label: 'Rainfall',
+            backgroundColor: [
+              '#6ae355',
+              '#163c3f',
+              '#59b0b2',
+              '#6de5cc',
+              '#5dca6c'
+            ],
+            hoverBackgroundColor: [
+            '#501800',
+            '#4B5000',
+            '#175000',
+            '#003350',
+            '#35014F'
+            ],
+            data: graphNumbers
+          }
+        ]
+      }
+      console.log(fart, 'fart')
+    return (
+      <div>
+        <Doughnut
+          data={fart}
+          options={{
+            title:{
+              display:true,
+              fontSize:20
             },
-            options: {
+            legend:{
+              display:true,
+              position:'left'
             }
-        });
-    }
-    render() {
-        return (
-            <div>
-                <canvas
-                    id="myChart"
-                    ref={this.chartRef}
-                />
-            </div>
-        )
-    }
+          }}
+        />
+      </div>
+    );
 }
