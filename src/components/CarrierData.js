@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Container from '@material-ui/core/Container';
 import PieChart from './PieChart'
 import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -44,9 +43,6 @@ export default function CarrierData(props) {
     ))
     const brokerPremiumTitle = props.brokerdata.premiumRange.map(premiums => (
         premiums.title
-    ))
-    const brokerPremiumTotal = props.brokerdata.premiumRange.map(premiums => (
-        premiums.premium
     ))
     const brokerMarketData = props.brokerdata.brokerDivision.map(division => (
         division.proportion
@@ -97,7 +93,6 @@ export default function CarrierData(props) {
     const [isIndustry, setIsIndustry] = useState(false);
     const [isMarket, setIsMarkets] = useState(false);
     const [isProducts, setIsProdcuts] = useState(false);
-    const [isActive, setIsActive] = useState(false);
 
     return (
         <React.Fragment>
