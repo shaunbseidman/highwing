@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles({
     arrow: {
-        color: 'red'
+        color: 'rgb(99, 217, 193)'
     }
   });
 
