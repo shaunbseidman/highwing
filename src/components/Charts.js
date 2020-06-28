@@ -4,7 +4,6 @@ import { Query } from "react-apollo";
 import BrokerTitle from './BrokerTitle'
 import CarrierData from './CarrierData'
 
-
 const CHART_QUERY = gql`
 query ChartQuery {
     mostRecentSnapshot {

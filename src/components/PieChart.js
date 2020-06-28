@@ -1,5 +1,6 @@
 import React from 'react';
 import {Pie, Doughnut} from 'react-chartjs-2';
+import  '../styles/chart.scss';
 
 export default function PieChart (props) {
     const graphData = props
@@ -29,18 +30,24 @@ export default function PieChart (props) {
         ]
       }
     return (
-      <div>
+      <div className="doughnutChart">
         <Doughnut
           data={data}
           options={{
             title:{
               display:true,
-              fontSize:20
+              fontSize: 35
             },
+            percentageInnerCutout: 40,
+            cutoutPercentage: 83,
             legend:{
               display:true,
-              position:'left'
+              position:'left',
+              labels: {
+                boxWidth: 10,
+                usePointStyle: true
             }
+            },
           }}
         />
       </div>
