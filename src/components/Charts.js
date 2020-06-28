@@ -9,6 +9,7 @@ query ChartQuery {
     mostRecentSnapshot {
         year
         broker {
+            name
             description
         }
         carrier {
@@ -79,7 +80,7 @@ export class Charts extends Component {
                             if(error)console.log(error)
                             console.log(data)
                             return <Fragment>
-                                <BrokerTitle title={data.mostRecentSnapshot.carrier.name} description={data.mostRecentSnapshot.broker.description}/>
+                                <BrokerTitle title={data.mostRecentSnapshot.broker.name} description={data.mostRecentSnapshot.broker.description}/>
                                 <CarrierData carrierdata={data.mostRecentSnapshot.carrierSlice} brokerdata={data.mostRecentSnapshot.brokerSlice}/>
                             </Fragment>
                         }

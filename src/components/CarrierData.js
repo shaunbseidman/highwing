@@ -7,7 +7,7 @@ import  '../styles/carrierdata.scss';
 
 const useStyles = makeStyles({
     carrierInfo: {
-        backgroundColor: '#ebeeef',
+        backgroundColor: '#EAEEEF',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         marginLeft: '1rem',
@@ -17,11 +17,29 @@ const useStyles = makeStyles({
             display: 'block',
         },
     },
-    filterButton: {
-        marginLeft: '1rem',
-        marginRight: '.3rem',
+    clickedFilterButton:{
+        backgroundColor: '#00E0C2',
+        fontSize: '12px',
+        fontWeight: '500',
+        letterSpacing: '0.24px',
+        lineHeight: '15px',
+        textTransform: 'none',
+        marginLeft: '35px',
+        marginRight: '-25px',
         marginTop: '4rem',
-        marginBottom: '4rem',
+        marginBottom: '3.2rem',
+    },
+    filterButton: {
+        fontSize: '12px',
+        fontWeight: '500',
+        letterSpacing: '0.24px',
+        lineHeight: '15px',
+        textTransform: 'none',
+        marginLeft: '35px',
+        marginRight: '-25px',
+        marginTop: '4rem',
+        color: "#6D7777",
+        marginBottom: '3.2rem',
         "&:active": {
             backgroundColor: "rgb(99, 217, 193)"
         },
@@ -31,7 +49,7 @@ const useStyles = makeStyles({
             marginBottom: '.3rem',
             marginTop: '.3rem'
         },
-    },
+    }
   });
 
 export default function CarrierData(props) {
@@ -93,39 +111,35 @@ export default function CarrierData(props) {
     const [isIndustry, setIsIndustry] = useState(false);
     const [isMarket, setIsMarkets] = useState(false);
     const [isProducts, setIsProdcuts] = useState(false);
+    const togglePremium = () => setIsPremium(!isPremium);
+    const toggleMarket = () => setIsMarkets(!isMarket);
+    const toggleIndustry = () => setIsIndustry(!isIndustry);
+    const toggleProducts = () => setIsProdcuts(!isProducts);
 
     return (
         <React.Fragment>
             <div className="buttonFilters">
                 <Button
-                onClick={() => {
-                    setIsPremium(!isPremium)
-                }}
-                className={classes.filterButton}
+                onClick={togglePremium}
+                className={isPremium ? classes.clickedFilterButton: classes.filterButton}
                 variant="outlined">
                 Premium Range
                 </Button>
                 <Button
-                    onClick={() => {
-                        setIsMarkets(!isMarket)
-                    }}
-                    className={classes.filterButton}
+                    onClick={toggleMarket}
+                    className={isMarket ? classes.clickedFilterButton: classes.filterButton}
                     variant="outlined">
                     Markets
                 </Button>
                 <Button
-                    onClick={() => {
-                        setIsIndustry(!isIndustry)
-                    }}
-                    className={classes.filterButton}
+                    onClick={toggleIndustry}
+                    className={isIndustry ? classes.clickedFilterButton: classes.filterButton}
                     variant="outlined">
                     Industries
                 </Button>
                 <Button
-                    onClick={() => {
-                        setIsProdcuts(!isProducts)
-                    }}
-                    className={classes.filterButton}
+                    onClick={toggleProducts}
+                    className={isProducts ? classes.clickedFilterButton: classes.filterButton}
                     variant="outlined">
                     Products
                 </Button>
@@ -135,26 +149,25 @@ export default function CarrierData(props) {
                     <h1 className="brokerTitle">Broker Book</h1>
                     {isPremium &&
                         <div className="pieData">
-                            <h3>Broker Premium</h3>
+                            <h3 className="categoryTitles">Broker Premium</h3>
                             <PieChart data={brokerPremium} title={brokerPremiumTitle}/>
-                            <span>Total Premiums</span>
                         </div>
                     }
                     {isMarket &&
                         <div className="pieData">
-                            <h3>Broker Markets</h3>
+                            <h3 className="categoryTitles">Broker Markets</h3>
                             <PieChart data={brokerMarketData} title={brokerMarketTitle}/>
                         </div>
                     }
                     {isIndustry &&
                         <div className="pieData">
-                            <h3>Broker Industries</h3>
+                            <h3 className="categoryTitles">Broker Industries</h3>
                             <PieChart data={brokerIndustryData} title={brokerIndustryTitle}/>
                         </div>
                     }
                     {isProducts &&
                         <div className="pieData">
-                            <h3>Broker Products</h3>
+                            <h3 className="categoryTitles">Broker Products</h3>
                             <PieChart data={brokerProductData} title={brokerProductTitle}/>
                         </div>
                     }
@@ -163,26 +176,25 @@ export default function CarrierData(props) {
                     <h1 className="carrierTitle">Carrier Placement</h1>
                     {isPremium &&
                         <div className="pieData">
-                            <h3>Carrier Premium</h3>
+                            <h3 className="categoryTitles">Carrier Premium</h3>
                             <PieChart data={premium} title={premiumTitle}/>
-                            <span>Total Premiums</span>
                         </div>
                     }
                     {isMarket &&
                         <div className="pieData">
-                            <h3>Carrier Markets</h3>
+                            <h3 className="categoryTitles">Carrier Markets</h3>
                             <PieChart data={marketData} title={marketTitle}/>
                         </div>
                     }
                     {isIndustry &&
                         <div className="pieData">
-                            <h3>Carrier Industries</h3>
+                            <h3 className="categoryTitles">Carrier Industries</h3>
                             <PieChart data={industryData} title={industryTitle}/>
                         </div>
                     }
                     {isProducts &&
                         <div className="pieData">
-                            <h3>Carrier Products</h3>
+                            <h3 className="categoryTitles">Carrier Products</h3>
                             <PieChart data={productData} title={productTitle}/>
                         </div>
                     }

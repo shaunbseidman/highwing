@@ -6,7 +6,9 @@ import  '../styles/broker.scss';
 const useStyles = makeStyles({
     arrow: {
         color: 'rgb(99, 217, 193)',
-        marginTop: '1.3rem'
+        marginTop: '41px',
+        width: '33px',
+        height: '25px'
     }
   });
 
@@ -16,7 +18,7 @@ export default function BrokerTitle(props) {
     <div className="brokerInfo">
         <ArrowBackIcon className={classes.arrow}/>
         <div>
-            <h1>{props.title}</h1>
+            <h1 className={"header"}>{props.title}</h1>
         </div>
         <div className="summary">
             <div className="summary-title">Summary</div>
