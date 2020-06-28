@@ -137,7 +137,6 @@ export default function CarrierData(props) {
                         <div className="pieData">
                             <h3>Broker Premium</h3>
                             <PieChart data={brokerPremium} title={brokerPremiumTitle}/>
-                            <span>Total Premiums</span>
                         </div>
                     }
                     {isMarket &&
@@ -165,7 +164,6 @@ export default function CarrierData(props) {
                         <div className="pieData">
                             <h3>Carrier Premium</h3>
                             <PieChart data={premium} title={premiumTitle}/>
-                            <span>Total Premiums</span>
                         </div>
                     }
                     {isMarket &&
