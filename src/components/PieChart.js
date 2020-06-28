@@ -5,8 +5,7 @@ export default function PieChart (props) {
     const graphData = props
     const graphNumbers = graphData.data
     const graphTitle = graphData.title
-    console.log(graphData,'data')
-    const fart = {
+    const data = {
         labels: graphTitle,
         datasets: [
           {
@@ -29,11 +28,10 @@ export default function PieChart (props) {
           }
         ]
       }
-      console.log(fart, 'fart')
     return (
       <div>
         <Doughnut
-          data={fart}
+          data={data}
           options={{
             title:{
               display:true,
