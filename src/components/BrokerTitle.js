@@ -5,7 +5,8 @@ import  '../styles/broker.scss';
 
 const useStyles = makeStyles({
     arrow: {
-        color: 'rgb(99, 217, 193)'
+        color: 'rgb(99, 217, 193)',
+        marginTop: '1.3rem'
     }
   });
 

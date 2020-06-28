@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import Container from '@material-ui/core/Container';
 import PieChart from './PieChart'
 import {makeStyles} from '@material-ui/core/styles';
@@ -25,19 +25,28 @@ const useStyles = makeStyles({
         marginBottom: '4rem',
         "&:active": {
             backgroundColor: "rgb(99, 217, 193)"
-        }
-    }
+        },
+        [BREAKPOINTS.down('sm')]: {
+            marginLeft: '.2rem',
+            marginRight: '.2rem',
+            marginBottom: '.3rem',
+            marginTop: '.3rem'
+        },
+    },
   });
 
 export default function CarrierData(props) {
     const classes = useStyles();
 
     //broker props
-    const brokerPremium = props.brokerdata.premiumRange.map(division => (
-        division.premium
+    const brokerPremium = props.brokerdata.premiumRange.map(premiums => (
+        premiums.proportion
     ))
-    const brokerPremiumTitle = props.brokerdata.premiumRange.map(division => (
-        division.title
+    const brokerPremiumTitle = props.brokerdata.premiumRange.map(premiums => (
+        premiums.title
+    ))
+    const brokerPremiumTotal = props.brokerdata.premiumRange.map(premiums => (
+        premiums.premium
     ))
     const brokerMarketData = props.brokerdata.brokerDivision.map(division => (
         division.proportion
@@ -60,7 +69,7 @@ export default function CarrierData(props) {
 
     //carieer props
     const premium = props.carrierdata.premiumRange.map(division => (
-        division.premium
+        division.proportion
     ))
     const premiumTitle = props.carrierdata.premiumRange.map(division => (
         division.title
@@ -88,13 +97,14 @@ export default function CarrierData(props) {
     const [isIndustry, setIsIndustry] = useState(false);
     const [isMarket, setIsMarkets] = useState(false);
     const [isProducts, setIsProdcuts] = useState(false);
+    const [isActive, setIsActive] = useState(false);
 
     return (
         <React.Fragment>
             <div className="buttonFilters">
                 <Button
                 onClick={() => {
-                    setIsPremium(true)
+                    setIsPremium(!isPremium)
                 }}
                 className={classes.filterButton}
                 variant="outlined">
@@ -102,7 +112,7 @@ export default function CarrierData(props) {
                 </Button>
                 <Button
                     onClick={() => {
-                        setIsMarkets(true)
+                        setIsMarkets(!isMarket)
                     }}
                     className={classes.filterButton}
                     variant="outlined">
@@ -110,7 +120,7 @@ export default function CarrierData(props) {
                 </Button>
                 <Button
                     onClick={() => {
-                        setIsIndustry(true)
+                        setIsIndustry(!isIndustry)
                     }}
                     className={classes.filterButton}
                     variant="outlined">
@@ -118,7 +128,7 @@ export default function CarrierData(props) {
                 </Button>
                 <Button
                     onClick={() => {
-                        setIsProdcuts(true)
+                        setIsProdcuts(!isProducts)
                     }}
                     className={classes.filterButton}
                     variant="outlined">
@@ -132,6 +142,7 @@ export default function CarrierData(props) {
                         <div className="pieData">
                             <h3>Broker Premium</h3>
                             <PieChart data={brokerPremium} title={brokerPremiumTitle}/>
+                            <span>Total Premiums</span>
                         </div>
                     }
                     {isMarket &&
@@ -159,6 +170,7 @@ export default function CarrierData(props) {
                         <div className="pieData">
                             <h3>Carrier Premium</h3>
                             <PieChart data={premium} title={premiumTitle}/>
+                            <span>Total Premiums</span>
                         </div>
                     }
                     {isMarket &&
