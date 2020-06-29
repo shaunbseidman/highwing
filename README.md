@@ -3,11 +3,11 @@ Live at: http://spotted-soap.surge.sh/
 
 ### Installation
 * `nvm use`
-* `yarn add`
+* `npm install`
 
 ### Run the thing
-* `yarn start`
+* `npm start`
 
 ### Test the thing
-* `yarn open cypress`
+* `node_modules/.bin/cypress open`
 
