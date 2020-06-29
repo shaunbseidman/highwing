@@ -39,7 +39,7 @@ export default function PieChart (props) {
               fontSize: 35
             },
             percentageInnerCutout: 40,
-            cutoutPercentage: 83,
+            cutoutPercentage: 73,
             legend:{
               display:true,
               position:'left',
