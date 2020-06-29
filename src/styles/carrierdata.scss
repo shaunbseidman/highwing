@@ -21,6 +21,10 @@
     font-weight: 300;
     letter-spacing: -1.11px;
     line-height: 48px;
+
+    @include mqViewportMobile {
+        margin-top: 4rem;
+    }
 }
 
 .categoryTitles {
