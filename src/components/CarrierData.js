@@ -28,6 +28,12 @@ const useStyles = makeStyles({
         marginRight: '-25px',
         marginTop: '4rem',
         marginBottom: '3.2rem',
+        [BREAKPOINTS.down('sm')]: {
+            marginLeft: '.2rem',
+            marginRight: '.2rem',
+            marginBottom: '.3rem',
+            marginTop: '.3rem'
+        },
     },
     filterButton: {
         fontSize: '12px',

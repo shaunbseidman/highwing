@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap');
+@import './mixins';
 
 .pieData {
     margin: 2rem;
+
+    @include mqViewportMobile {
+        margin-bottom: 4rem;
+    }
 }
 
 .brokerTitle,
