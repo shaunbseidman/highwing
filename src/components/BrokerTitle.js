@@ -13,7 +13,8 @@ const useStyles = makeStyles({
   });
 
 export default function BrokerTitle(props) {
-    const classes = useStyles();
+  const classes = useStyles();
+
   return (
     <div className="brokerInfo">
         <ArrowBackIcon className={classes.arrow}/>

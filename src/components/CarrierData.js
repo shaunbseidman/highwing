@@ -118,18 +118,18 @@ export default function CarrierData(props) {
     const [isMarket, setIsMarkets] = useState(false);
     const [isProducts, setIsProdcuts] = useState(false);
     const togglePremium = () => setIsPremium(!isPremium);
-    const toggleMarket = () => setIsMarkets(!isMarket);
     const toggleIndustry = () => setIsIndustry(!isIndustry);
+    const toggleMarket = () => setIsMarkets(!isMarket);
     const toggleProducts = () => setIsProdcuts(!isProducts);
 
     return (
         <React.Fragment>
             <div className="buttonFilters">
                 <Button
-                onClick={togglePremium}
-                className={isPremium ? classes.clickedFilterButton: classes.filterButton}
-                variant="outlined">
-                Premium Range
+                    onClick={togglePremium}
+                    className={isPremium ? classes.clickedFilterButton: classes.filterButton}
+                    variant="outlined">
+                    Premium Range
                 </Button>
                 <Button
                     onClick={toggleMarket}
