@@ -19,7 +19,7 @@ export default function BrokerTitle(props) {
     <div className="brokerInfo">
         <ArrowBackIcon className={classes.arrow}/>
         <div>
-            <h1 className={"header"}>{props.title}</h1>
+            <h1 className="header">{props.title}</h1>
         </div>
         <div className="summary">
             <div className="summary-title">Summary</div>
