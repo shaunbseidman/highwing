@@ -3,34 +3,34 @@
 @import './mixins';
 
 .pieData {
-    margin: 2rem;
+    margin: $remSpacing4;
 
     @include mqViewportMobile {
-        margin-bottom: 4rem;
+        margin-bottom: $remSpacing6;
     }
 }
 
 .brokerTitle,
 .carrierTitle {
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-bottom: 72px;
+    margin-left: $remSpacing4;
+    margin-right: $remSpacing4;
+    margin-bottom: $spacing10;
     color: #4A4A4A;
     font-family: Barlow;
-    font-size: 40px;
+    font-size: $spacing6;
     font-weight: 300;
     letter-spacing: -1.11px;
-    line-height: 48px;
+    line-height: $spacing7;
 
     @include mqViewportMobile {
-        margin-top: 4rem;
+        margin-top: $remSpacing6;
     }
 }
 
 .categoryTitles {
     color: #4A4A4A;
     font-family: Barlow;
-    font-size: 32px;
+    font-size: $spacing5;
     font-weight: 300;
     letter-spacing: -1.07px;
     line-height: 38px;
@@ -38,11 +38,11 @@
 
 .buttonFilters {
     background-color: #EAEEEF;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: $remSpacing2;
+    margin-right: $remSpacing2;
     color: #006667;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     letter-spacing: 0.24px;
-    line-height: 15px;
+    line-height: $spacing3;
 }

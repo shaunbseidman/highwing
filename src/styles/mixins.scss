@@ -1,3 +1,26 @@
+// Relative Margins & Padding (spacing)
+$remSpacing1: 0.4rem;
+$remSpacing2: 1rem;
+$remSpacing3: 1.6rem;
+$remSpacing4: 2.0rem;
+$remSpacing5: 3.2rem;
+$remSpacing6: 4rem;
+$remSpacing7: 4.8rem;
+$remSpacing8: 5.6rem;
+$remSpacing9: 6.4rem;
+
+// Absolute Margins & Padding (spacing) Note: Use remSpacing whenever possible.
+$spacing1: 4px;
+$spacing2: 8px;
+$spacing3: 15px;
+$spacing4: 24px;
+$spacing5: 32px;
+$spacing6: 40px;
+$spacing7: 48px;
+$spacing8: 56px;
+$spacing9: 64px;
+$spacing10: 72px;
+
 $viewport-xs-width: 320px;
 $viewport-sm-width: 568px;
 $viewport-md-width: 768px;
