@@ -29,6 +29,7 @@ export default function PieChart (props) {
           }
         ]
       }
+
     return (
       <div className="doughnutChart">
         <Doughnut
@@ -46,7 +47,7 @@ export default function PieChart (props) {
               labels: {
                 boxWidth: 10,
                 usePointStyle: true
-            }
+              }
             },
           }}
         />

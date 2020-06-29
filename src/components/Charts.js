@@ -71,7 +71,6 @@ export class Charts extends Component {
                         ({loading, error, data}) => {
                             if(loading) return <h3>Data loading...</h3>
                             if(error)console.log(error)
-                            console.log(data)
                             return <Fragment>
                                 <BrokerTitle title={data.mostRecentSnapshot.broker.name} description={data.mostRecentSnapshot.broker.description}/>
                                 <CarrierData carrierdata={data.mostRecentSnapshot.carrierSlice} brokerdata={data.mostRecentSnapshot.brokerSlice}/>
