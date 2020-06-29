@@ -1,0 +1,83 @@
+$viewport-xs-width: 320px;
+$viewport-sm-width: 568px;
+$viewport-md-width: 768px;
+$viewport-lg-width: 1024px;
+$viewport-xl-width: 1440px;
+
+$viewport-xxs-max: ($viewport-xs-width - 1);
+$viewport-xs-max: ($viewport-sm-width - 1);
+$viewport-sm-max: ($viewport-md-width - 1);
+$viewport-md-max: ($viewport-lg-width - 1);
+$viewport-lg-max: ($viewport-xl-width - 1);
+
+@mixin mqViewportXs {
+    @media only screen and (min-width: $viewport-xs-width) {
+        @content;
+    }
+}
+
+@mixin mqViewportSm {
+    @media only screen and (min-width: $viewport-sm-width) {
+        @content;
+    }
+}
+
+@mixin mqViewportMd {
+    @media only screen and (min-width: $viewport-md-width) {
+        @content;
+    }
+}
+
+@mixin mqViewportLg {
+    @media only screen and (min-width: $viewport-lg-width) {
+        @content;
+    }
+}
+
+@mixin mqViewportXl {
+    @media only screen and (min-width: $viewport-xl-width) {
+        @content;
+    }
+}
+
+@mixin mqViewportXxl {
+    @media only screen and (min-width: $viewport-xxl-width) {
+        @content;
+    }
+}
+
+@mixin mqViewportMobile() {
+    @media only screen and (max-width: $viewport-xs-max) {
+        @content;
+    }
+}
+
+@mixin mqViewportMobilePortrait() {
+    @media only screen and (max-width: $viewport-xs-max) and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin mqViewportXsOnly() {
+    @media only screen and (max-width: $viewport-xs-max) {
+        @content;
+    }
+}
+
+@mixin mqViewportSmOnly() {
+    @media only screen and (min-width: $viewport-sm-width) and (max-width: $viewport-sm-max) {
+        @content;
+    }
+}
+
+@mixin mqViewportMdOnly() {
+    @media only screen and (min-width: $viewport-md-width) and (max-width: $viewport-md-max) {
+        @content;
+    }
+}
+
+@mixin mqViewportLgOnly() {
+    @media only screen and (min-width: $viewport-lg-width) and (max-width: $viewport-lg-max) {
+        @content;
+    }
+}

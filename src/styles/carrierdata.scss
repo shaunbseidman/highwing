@@ -1,16 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap');
+@import './mixins';
+
 .pieData {
     margin: 2rem;
+
+    @include mqViewportMobile {
+        margin-bottom: 4rem;
+    }
 }
 
 .brokerTitle,
 .carrierTitle {
     margin-left: 2rem;
     margin-right: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 72px;
+    color: #4A4A4A;
+    font-family: Barlow;
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: -1.11px;
+    line-height: 48px;
+
+    @include mqViewportMobile {
+        margin-top: 4rem;
+    }
+}
+
+.categoryTitles {
+    color: #4A4A4A;
+    font-family: Barlow;
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -1.07px;
+    line-height: 38px;
 }
 
 .buttonFilters {
-    background-color: #ebeeef;
+    background-color: #EAEEEF;
     margin-left: 1rem;
     margin-right: 1rem;
+    color: #006667;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.24px;
+    line-height: 15px;
 }
