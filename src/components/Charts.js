@@ -62,13 +62,6 @@ query ChartQuery {
     }
 }`
 
-export const BROKER_PREMIUM = 'premium';
-export const BROKER_DIVISIONS = 'divisiouns';
-export const BROKER_INDUSTRY = 'industry';
-export const CARRIER_PREMIUM = 'premium';
-export const CARRRIER_DIVISIONS = 'divisiouns';
-export const CARRIER_INDUSTRY = 'industry';
-
 export class Charts extends Component {
     render() {
         return (
