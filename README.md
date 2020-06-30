@@ -1,5 +1,5 @@
 Homework for Highwing
-Live at: http://spotted-soap.surge.sh/
+live at: http://spotted-soap.surge.sh/
 
 ### Installation
 * `nvm use`
