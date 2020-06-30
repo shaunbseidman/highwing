@@ -22,7 +22,7 @@ query ChartQuery {
               proportion
             }
             products {
-              title,
+              title
               premium
               proportion
             }
@@ -36,7 +36,7 @@ query ChartQuery {
               premium
               proportion
             }
-          }
+        }
         carrierSlice {
             premiumRange {
                 title

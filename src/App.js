@@ -10,11 +10,11 @@ const client =  new ApolloClient({
 
 function App() {
   return (
-  <ApolloProvider client={client}>
-    <div className="App">
-      <Charts/>
-    </div>
-  </ApolloProvider>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <Charts/>
+      </div>
+    </ApolloProvider>
   );
 }
 
