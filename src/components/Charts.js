@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { gql } from "apollo-boost";
 import { Query } from "react-apollo";
 import BrokerTitle from './BrokerTitle'
-import CarrierData from './CarrierData'
+import Data from './Data'
 
 const CHART_QUERY = gql`
 query ChartQuery {
@@ -62,7 +62,7 @@ query ChartQuery {
     }
 }`
 
-export class Charts extends Component {
+export default class Charts extends Component {
     render() {
         return (
             <Fragment>
@@ -70,11 +70,15 @@ export class Charts extends Component {
                     {
                         ({loading, error, data}) => {
                             if(loading) return <h3>Data loading...</h3>
-                            if(error)console.log(error)
-                            return <Fragment>
-                                <BrokerTitle title={data.mostRecentSnapshot.broker.name} description={data.mostRecentSnapshot.broker.description}/>
-                                <CarrierData carrierdata={data.mostRecentSnapshot.carrierSlice} brokerdata={data.mostRecentSnapshot.brokerSlice}/>
-                            </Fragment>
+                            if(error) {
+                                console.log(error)
+                                return <h3>Opps, something is wrong</h3>
+                            } else {
+                                return <Fragment>
+                                    <BrokerTitle title={data.mostRecentSnapshot.broker.name} description={data.mostRecentSnapshot.broker.description}/>
+                                    <Data carrierdata={data.mostRecentSnapshot.carrierSlice} brokerdata={data.mostRecentSnapshot.brokerSlice}/>
+                                </Fragment>
+                            }
                         }
                     }
                 </Query>
@@ -83,4 +87,3 @@ export class Charts extends Component {
     }
 }
 
-export default Charts

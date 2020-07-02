@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import PieChart from './PieChart'
+import DoughnutChart from './DoughnutChart'
 import {makeStyles} from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import {BREAKPOINTS} from './Styles'
-import  '../styles/carrierdata.scss';
+import  '../styles/data.scss';
+import FilterButtons from './FilterButtons'
 
 const useStyles = makeStyles({
     carrierInfo: {
@@ -58,60 +58,66 @@ const useStyles = makeStyles({
     }
   });
 
-export default function CarrierData(props) {
+export default function Data(props) {
     const classes = useStyles();
 
     //broker props
-    const brokerPremium = props.brokerdata.premiumRange.map(premiums => (
-        premiums.proportion
-    ))
-    const brokerPremiumTitle = props.brokerdata.premiumRange.map(premiums => (
-        premiums.title
-    ))
-    const brokerMarketData = props.brokerdata.brokerDivision.map(division => (
-        division.proportion
-    ))
-    const brokerMarketTitle = props.brokerdata.brokerDivision.map(division => (
-        division.title
-    ))
-    const brokerProductData = props.brokerdata.products.map(product => (
-        product.proportion
-    ))
-    const brokerProductTitle = props.brokerdata.products.map(product => (
-        product.title
-    ))
-    const brokerIndustryData = props.brokerdata.industries.map(industry => (
-        industry.proportion
-    ))
-    const brokerIndustryTitle = props.brokerdata.industries.map(industry => (
-        industry.title
-    ))
+    const brokerPremium = []
+    const brokerPremiumTitle = []
+    for(const premium of props.brokerdata.premiumRange) {
+        brokerPremium.push(premium.proportion)
+        brokerPremiumTitle.push(premium.title)
+    }
+
+    const brokerMarketData = []
+    const brokerMarketTitle = []
+    for(const division of props.brokerdata.brokerDivision) {
+        brokerMarketData.push(division.proportion)
+        brokerMarketTitle.push(division.title)
+    }
+
+    const brokerProductData = []
+    const brokerProductTitle = []
+    for(const product of props.brokerdata.products) {
+        brokerProductData.push(product.proportion)
+        brokerProductTitle.push(product.title)
+    }
+
+    const brokerIndustryData = []
+    const brokerIndustryTitle = []
+    for(const industry of props.brokerdata.industries) {
+        brokerIndustryData.push(industry.proportion)
+        brokerIndustryTitle.push(industry.title)
+    }
 
     //carieer props
-    const premium = props.carrierdata.premiumRange.map(division => (
-        division.proportion
-    ))
-    const premiumTitle = props.carrierdata.premiumRange.map(division => (
-        division.title
-    ))
-    const marketData = props.carrierdata.brokerDivision.map(division => (
-        division.proportion
-    ))
-    const marketTitle = props.carrierdata.brokerDivision.map(division => (
-        division.title
-    ))
-    const productData = props.carrierdata.products.map(product => (
-        product.proportion
-    ))
-    const productTitle = props.carrierdata.products.map(product => (
-        product.title
-    ))
-    const industryData = props.carrierdata.industries.map(industry => (
-        industry.proportion
-    ))
-    const industryTitle = props.carrierdata.industries.map(industry => (
-        industry.title
-    ))
+    const carrierPremium = []
+    const carrierPremiumTitle = []
+    for(const premium of props.carrierdata.premiumRange) {
+        carrierPremium.push(premium.proportion)
+        carrierPremiumTitle.push(premium.title)
+    }
+
+    const carrierMakertData = []
+    const carrierMarketTitle = []
+    for(const division of props.carrierdata.brokerDivision) {
+        carrierMakertData.push(division.proportion)
+        carrierMarketTitle.push(division.title)
+    }
+
+    const carrierProductData = []
+    const carrierProductTitle = []
+    for(const product of props.carrierdata.products) {
+        carrierProductData.push(product.proportion)
+        carrierProductTitle.push(product.title)
+    }
+
+    const carrierIndustryData = []
+    const carrierIndustryTitle = []
+    for(const industry of props.carrierdata.industries) {
+        carrierIndustryData.push(industry.proportion)
+        carrierIndustryTitle.push(industry.title)
+    }
 
     const [isPremium, setIsPremium] = useState(false);
     const [isIndustry, setIsIndustry] = useState(false);
@@ -125,56 +131,52 @@ export default function CarrierData(props) {
     return (
         <React.Fragment>
             <div className="buttonFilters">
-                <Button
+                <FilterButtons
                     onClick={togglePremium}
                     className={isPremium ? classes.clickedFilterButton: classes.filterButton}
-                    variant="outlined">
-                    Premium Range
-                </Button>
-                <Button
+                    variant="outlined"
+                    title='Premium Range'
+                />
+                <FilterButtons
                     onClick={toggleMarket}
                     className={isMarket ? classes.clickedFilterButton: classes.filterButton}
-                    variant="outlined">
-                    Markets
-                </Button>
-                <Button
+                    variant="outlined"
+                    title='Markets'
+                />
+                <FilterButtons
                     onClick={toggleIndustry}
                     className={isIndustry ? classes.clickedFilterButton: classes.filterButton}
-                    variant="outlined">
-                    Industries
-                </Button>
-                <Button
+                    variant="outlined"
+                    title='Industries'
+                />
+                <FilterButtons
                     onClick={toggleProducts}
                     className={isProducts ? classes.clickedFilterButton: classes.filterButton}
-                    variant="outlined">
-                    Products
-                </Button>
+                    variant="outlined"
+                    title='Products'
+                />
             </div>
             <div className={classes.carrierInfo}>
                 <div className={classes.broker}>
                     <h1 className="brokerTitle">Broker Book</h1>
                     {isPremium &&
                         <div className="pieData">
-                            <h3 className="categoryTitles">Broker Premium</h3>
-                            <PieChart data={brokerPremium} title={brokerPremiumTitle}/>
+                            <DoughnutChart data={brokerPremium} title={brokerPremiumTitle} chartTitle='Broker Premium'/>
                         </div>
                     }
                     {isMarket &&
                         <div className="pieData">
-                            <h3 className="categoryTitles">Broker Markets</h3>
-                            <PieChart data={brokerMarketData} title={brokerMarketTitle}/>
+                            <DoughnutChart data={brokerMarketData} title={brokerMarketTitle} chartTitle='Broker Markets'/>
                         </div>
                     }
                     {isIndustry &&
                         <div className="pieData">
-                            <h3 className="categoryTitles">Broker Industries</h3>
-                            <PieChart data={brokerIndustryData} title={brokerIndustryTitle}/>
+                            <DoughnutChart data={brokerIndustryData} title={brokerIndustryTitle} chartTitle='Broker Industries'/>
                         </div>
                     }
                     {isProducts &&
                         <div className="pieData">
-                            <h3 className="categoryTitles">Broker Products</h3>
-                            <PieChart data={brokerProductData} title={brokerProductTitle}/>
+                            <DoughnutChart data={brokerProductData} title={brokerProductTitle} chartTitle='Broker Products'/>
                         </div>
                     }
                 </div>
@@ -182,26 +184,22 @@ export default function CarrierData(props) {
                     <h1 className="carrierTitle">Carrier Placement</h1>
                     {isPremium &&
                         <div className="pieData">
-                            <h3 className="categoryTitles">Carrier Premium</h3>
-                            <PieChart data={premium} title={premiumTitle}/>
+                            <DoughnutChart data={carrierPremium} title={carrierPremiumTitle} chartTitle='Carrier Premium'/>
                         </div>
                     }
                     {isMarket &&
                         <div className="pieData">
-                            <h3 className="categoryTitles">Carrier Markets</h3>
-                            <PieChart data={marketData} title={marketTitle}/>
+                            <DoughnutChart data={carrierMakertData} title={carrierMarketTitle} chartTitle='Carrier Markets'/>
                         </div>
                     }
                     {isIndustry &&
                         <div className="pieData">
-                            <h3 className="categoryTitles">Carrier Industries</h3>
-                            <PieChart data={industryData} title={industryTitle}/>
+                            <DoughnutChart data={carrierIndustryData} title={carrierIndustryTitle} chartTitle='Carrier Industries'/>
                         </div>
                     }
                     {isProducts &&
                         <div className="pieData">
-                            <h3 className="categoryTitles">Carrier Products</h3>
-                            <PieChart data={productData} title={productTitle}/>
+                            <DoughnutChart data={carrierProductData} title={carrierProductTitle} chartTitle='Carrier Products'/>
                         </div>
                     }
                 </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import {Doughnut} from 'react-chartjs-2';
 import  '../styles/chart.scss';
 
-export default function PieChart (props) {
+export default function DoughnutChart (props) {
     const graphData = props
     const graphNumbers = graphData.data
     const graphTitle = graphData.title
@@ -32,6 +32,7 @@ export default function PieChart (props) {
 
     return (
       <div className="doughnutChart">
+        <h3 className="chartTitles">{graphData.chartTitle}</h3>
         <Doughnut
           data={data}
           options={{
