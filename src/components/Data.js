@@ -60,32 +60,34 @@ const useStyles = makeStyles({
 
 export default function Data(props) {
     const classes = useStyles();
+    const brokerData = props.brokerdata
+    const carrierData = props.carrierdata
 
     //broker props
     const brokerPremium = []
     const brokerPremiumTitle = []
-    for(const premium of props.brokerdata.premiumRange) {
+    for(const premium of brokerData.premiumRange) {
         brokerPremium.push(premium.proportion)
         brokerPremiumTitle.push(premium.title)
     }
 
     const brokerMarketData = []
     const brokerMarketTitle = []
-    for(const division of props.brokerdata.brokerDivision) {
+    for(const division of brokerData.brokerDivision) {
         brokerMarketData.push(division.proportion)
         brokerMarketTitle.push(division.title)
     }
 
     const brokerProductData = []
     const brokerProductTitle = []
-    for(const product of props.brokerdata.products) {
+    for(const product of brokerData.products) {
         brokerProductData.push(product.proportion)
         brokerProductTitle.push(product.title)
     }
 
     const brokerIndustryData = []
     const brokerIndustryTitle = []
-    for(const industry of props.brokerdata.industries) {
+    for(const industry of brokerData.industries) {
         brokerIndustryData.push(industry.proportion)
         brokerIndustryTitle.push(industry.title)
     }
@@ -93,28 +95,28 @@ export default function Data(props) {
     //carieer props
     const carrierPremium = []
     const carrierPremiumTitle = []
-    for(const premium of props.carrierdata.premiumRange) {
+    for(const premium of carrierData.premiumRange) {
         carrierPremium.push(premium.proportion)
         carrierPremiumTitle.push(premium.title)
     }
 
     const carrierMakertData = []
     const carrierMarketTitle = []
-    for(const division of props.carrierdata.brokerDivision) {
+    for(const division of carrierData.brokerDivision) {
         carrierMakertData.push(division.proportion)
         carrierMarketTitle.push(division.title)
     }
 
     const carrierProductData = []
     const carrierProductTitle = []
-    for(const product of props.carrierdata.products) {
+    for(const product of carrierData.products) {
         carrierProductData.push(product.proportion)
         carrierProductTitle.push(product.title)
     }
 
     const carrierIndustryData = []
     const carrierIndustryTitle = []
-    for(const industry of props.carrierdata.industries) {
+    for(const industry of carrierData.industries) {
         carrierIndustryData.push(industry.proportion)
         carrierIndustryTitle.push(industry.title)
     }
